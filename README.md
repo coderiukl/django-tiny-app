@@ -25,4 +25,4 @@ Vào thư mục: `django-tiny-app` và khởi tạo `venv`
 `python manage.py makemigrations` &
 `python manage.py migrate`
 + Sau đó chạy lệnh: `python manage.py runserver` và Nhấn `Ctrl + click: https://127.0.0.1/8000` để chạy trang web
-+ ![image](https://github.com/user-attachments/assets/36831d53-3bc7-4b04-8e79-63e4c95f6ada)
+![image](https://github.com/user-attachments/assets/36831d53-3bc7-4b04-8e79-63e4c95f6ada)
