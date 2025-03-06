@@ -29,6 +29,8 @@
 
 ## 🚀 Hướng dẫn cài đặt và chạy ứng dụng
 
+## 🚀 Cách 1:
+
 ### 1️⃣ **Clone repository**
 Mở terminal hoặc command prompt và chạy lệnh:
 ```sh
@@ -72,6 +74,41 @@ Mở terminal hoặc command prompt và chạy lệnh:
 ```
 
 Sau đó, mở trình duyệt và truy cập **[http://127.0.0.1:8000](http://127.0.0.1:8000)** để sử dụng ứng dụng.
+
+## 🚀 Cách 2: Chạy trên Docker
+
+### 1️⃣ **Clone repository**
+Mở terminal hoặc command prompt và chạy lệnh:
+```sh
+ git clone https://github.com/coderiukl/django-tiny-app.git
+```
+### 2️⃣ **Di chuyển vào thư mục dự án**
+```sh
+ cd todo_project
+```
+### 2️⃣ **Đóng gói**
+Mở terminal hoặc command prompt và chạy lệnh, bước này sẽ khởi tạo images:
+```sh
+ docker-compose build 
+```
+Sau đó chạy lệnh:
+```sh
+ docker-compose up
+```
+Để khởi tạo container.
+### 3️⃣ **Vào container bằng cách**
+```sh
+ docker ps
+ docker exec -it <container_id> bash
+ python manage.py makemigrations
+ python manage.py migrate
+```
+### 4️⃣ **Chạy ứng dụng**
+Nhấn chuột vào ports 8000:8000
+
+![image](https://github.com/user-attachments/assets/1c65f73f-e395-421f-a58e-dc791c7fd0d6)
+
+![image](https://github.com/user-attachments/assets/9b6790ce-808c-4f69-ac5d-5304e4b6deb7)
 
 ---
 
