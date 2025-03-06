@@ -28,6 +28,23 @@
             {%endfor%}
         </tbody>
     </table>
+    <div class="pagination">
+        <span class="step-links">
+            {% if tasks_archieved.has_previous %}
+                <a href="?page=1">&laquo; First</a>
+                <a href="?page={{ tasks_archieved.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ tasks_archieved.number }} of {{ tasks_archieved.paginator.num_pages }}.
+            </span>
+
+            {% if tasks_archieved.has_next %}
+                <a href="?page={{ tasks_archieved.next_page_number }}">Next</a>
+                <a href="?page={{ tasks_archieved.paginator.num_pages }}">Last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {

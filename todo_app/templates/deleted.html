@@ -33,12 +33,51 @@
             {% endfor %}
         </tbody>
     </table>
+    <div class="pagination">
+        <span class="step-links">
+            {% if tasks_deleted.has_previous %}
+                <a href="?page=1">&laquo; First</a>
+                <a href="?page={{ tasks_deleted.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ tasks_deleted.number }} of {{ tasks_deleted.paginator.num_pages }}.
+            </span>
+
+            {% if tasks_deleted.has_next %}
+                <a href="?page={{ tasks_deleted.next_page_number }}">Next</a>
+                <a href="?page={{ tasks_deleted.paginator.num_pages }}">Last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
 </div>
 
 <!-- JavaScript để toggle hoàn thành -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".task-title").forEach(function (task) {
+<<<<<<< Tabnine <<<<<<<
+@login_required(login_url='/signin/')//+
+def delete_task(request)://+
+    """//+
+    This function handles the deletion of tasks for a logged-in user.//+
+    It retrieves tasks that have been marked as deleted by the user,//+
+    paginates them, and renders the 'deleted.html' template with the paginated tasks.//+
+//+
+    Parameters://+
+    request (HttpRequest): The request object containing information about the user and the request.//+
+//+
+    Returns://+
+    HttpResponse: The rendered 'deleted.html' template with the paginated tasks.//+
+    """//+
+    task_deleted = Task.objects.filter(user=request.user, is_archieved=False, is_deleted=True)//+
+    //+
+    paginator = Paginator(task_deleted, 4)//+
+    page_num = request.GET.get('page')//+
+    page_obj = paginator.get_page(page_num)//+
+    context = {'tasks_deleted':page_obj}//+
+    return render(request, 'deleted.html', context=context)//+
+>>>>>>> Tabnine >>>>>>>// {"conversationId":"f594a231-5d35-4477-af61-d392c3d685ac","source":"instruct"}
             task.addEventListener("click", function (event) {
                 event.preventDefault(); // Ngăn load lại trang
     

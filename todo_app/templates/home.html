@@ -56,7 +56,24 @@
             {% endfor %}
         </tbody>
     </table>
-    
+     <!-- Phân trang -->
+     <div class="pagination">
+        <span class="step-links">
+            {% if tasks.has_previous %}
+                <a href="?page=1">&laquo; First</a>
+                <a href="?page={{ tasks.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ tasks.number }} of {{ tasks.paginator.num_pages }}.
+            </span>
+
+            {% if tasks.has_next %}
+                <a href="?page={{ tasks.next_page_number }}">Next</a>
+                <a href="?page={{ tasks.paginator.num_pages }}">Last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
 </div>
 <script>
 function openEditModal(taskId) {

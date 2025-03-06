@@ -623,3 +623,19 @@ container-admin .success-message {
     }
 }
 
+/* <------------------------------------- Paginator --------------------------> */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    color: #2642df;
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}

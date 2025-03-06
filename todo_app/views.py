@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import PasswordChangeForm
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -14,8 +15,12 @@ def home(request):
     tasks = []
     if request.user.is_authenticated:  # Chỉ hiển thị task nếu user đăng nhập
         tasks = Task.objects.filter(user=request.user, is_deleted=False, is_archieved=False)
+    
+    paginator = Paginator(tasks, 4)
+    page_num = request.GET.get('page')
+    page_obj = paginator.get_page(page_num)
 
-    return render(request, 'home.html', {'tasks': tasks, 'form': form})
+    return render(request, 'home.html', {'tasks': page_obj, 'form': form})
 @login_required  # Chỉ cho phép user đã đăng nhập thêm task
 def add_task(request):
     if request.method == "POST":
@@ -29,13 +34,21 @@ def add_task(request):
 @login_required(login_url='/signin/')
 def archieve_task(request):
     task_archieved = Task.objects.filter(user=request.user, is_archieved=True, is_deleted=False)
-    context = {'tasks_archieved':task_archieved}
+    
+    paginator = Paginator(task_archieved, 4)
+    page_num = request.GET.get('page')
+    page_obj = paginator.get_page(page_num)
+    context = {'tasks_archieved':page_obj}
     return render(request, 'archieved.html', context=context)
 
 @login_required(login_url='/signin/')
 def delete_task(request):
     task_deleted = Task.objects.filter(user=request.user, is_archieved=False, is_deleted=True)
-    context = {'tasks_deleted':task_deleted}
+    
+    paginator = Paginator(task_deleted, 4)
+    page_num = request.GET.get('page')
+    page_obj = paginator.get_page(page_num)
+    context = {'tasks_deleted':page_obj}
     return render(request, 'deleted.html', context=context)
 
 def update_task(request, pk):
