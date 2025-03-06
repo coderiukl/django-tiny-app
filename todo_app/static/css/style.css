@@ -1,0 +1,455 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+header {
+    background: linear-gradient(90deg,#ff5757, #8c52ff);
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* Base.html */
+#main-title{
+    margin: 10px;
+    padding-left: 30px;
+}
+
+#main-title a {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: none;
+}
+
+#main-title a:hover {
+    color: #535353;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding-right: 40px;
+}
+
+.navbar div {
+    font-size: 25px;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.item-navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.item-navbar a:hover {
+    color: #535353;
+}
+/* home.html */
+.container h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+}
+
+#todo-list {
+    font-size: 50px;
+    color: #535353;
+}
+/* -> form */
+
+.container form {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+input[type="text"], textarea {
+    width: 450px;
+    height: 25px;
+    font-size: 16px;
+    padding: 8px;
+    border: 2px solid #535353;
+    border-radius: 5px;
+}
+
+button.add_task {
+    padding: 12px 15px;
+    font-size: 16px;
+    background-color: #b93345;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.add_task:hover {
+    background-color: #d86e7c
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-edit, .btn-delete, .btn-archieve, .btn-restore, .btn-empty-bin {
+    padding: 10px 12px;
+    font-weight: 14px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-edit {
+    background-color: #b93345;
+}
+
+.btn-edit:hover{
+    background-color: #d86e7c;
+}
+
+.btn-delete {
+    background-color: #b93345;
+}
+
+.btn-delete:hover{
+    background-color: #d86e7c;
+}
+
+.btn-archieve {
+    background-color: #b93345;
+}
+
+.btn-archieve:hover{
+    background-color: #d86e7c;
+}
+
+.btn-restore {
+    background-color: #b93345;
+}
+
+.btn-restore:hover{
+    background-color: #d86e7c;
+}
+
+.btn-empty-bin{
+    background-color: #b93345;
+}
+
+.btn-empty-bin:hover{
+    background-color: #d86e7c;
+}
+
+
+/* login.html */
+.login {
+    width: 350px;
+    padding: 40px 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+    width: 300px;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.login #username {
+    font-size: 20px;
+}
+
+.login #password {
+    font-size: 20px;
+}
+
+.signin_button {
+    width: 320px;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.signin_button:hover {
+    background-color: #0056b3;
+}
+
+
+/* signup.html */
+.registration {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    height: 100vh;
+    width: 100vw; 
+    position: relative; 
+}
+
+#signup {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Chỉnh các input */
+.signup-form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+    margin: auto;
+}
+
+
+.signup-form input {
+    width: 310px;
+    padding: 8px 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: block;
+}
+
+.signup-form label {
+    display: block;
+    text-align: left;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.signup_button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.signup_button a {
+    color: white;
+    text-decoration: none;
+}
+.signup_button:hover {
+    background-color: #0056b3;
+}
+.signup_btn {
+    width: 320px;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.signup_btn a {
+    color: white;
+    text-decoration: none;
+}
+.signup_btn:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.message-container {
+    margin: 10px auto;
+    text-align: center;
+    max-width: 400px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+
+/* tasks */
+.task-table {
+    width: 650px;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.task-table td {
+    padding: 20px;
+    text-align: center;
+}
+
+.task-item td:first-child {
+    text-align: left;
+    width: 60%;
+}
+
+.task-item td:last-child {
+    text-align: left;
+    width: 40%;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+}
+
+.task-item:hover {
+    background-color: #f1f1f1;
+}
+
+.completed-task {
+    background-color: #d3d3d3;
+    color: #535353;
+    text-decoration: line-through;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.pending-task {
+    background-color: white;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+
+/* Edit */
+/* Modal mặc định ẩn */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Nội dung modal */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Nút đóng modal */
+.close-modal {
+    color: #dc3545;
+    float: right;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Nút Update */
+.btn-save {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background-color: #218838;
+}
+
+/* Input chỉnh sửa */
+.modal input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* archieved.html */
+.table-archieved {
+    width: 650px;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.table-archieved td {
+    padding: 20px;
+    text-align: center;
+}
+
+/* deleted.html */
+.table-deleted {
+    width: 650px;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.table-deleted td {
+    padding: 20px;
+    text-align: center;
+}
+
+

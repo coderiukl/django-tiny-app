@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-deleted">
+    <h1>Your deleted tasks</h1>
+    
+    <!-- Nút để xóa toàn bộ task đã xóa -->
+    <a href="{% url 'empty_recycle_bin' %}" class="btn-empty-bin">Empty Recycle Bin</a>
+
+    <table class="table-deleted">
+        <tbody>
+            {% for item in tasks_deleted %}
+            <tr class="task-item">
+                <td>
+                    <a href="{% url 'update' item.pk%}?action=is_completed" 
+                       class="task-title {% if item.is_completed %} completed-task {% else %} pending-task {% endif %}"
+                       id="task_{{ item.pk }}" onclick="toggleCompleted(event, {{ item.pk }})">
+                        {{ item.title }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'update' item.pk%}?action=is_archieved" id="archive_{{ item.pk }}" class="btn-archieve">Archive</a>
+                </td>
+                <td>
+                    <a href="{% url 'update' item.pk%}?action=is_deleted" id="restore_{{ item.pk }}" class="btn-restore">Restore</a>
+                </td>
+            </tr>
+            {% empty %}
+            <div>
+                <p>No deleted tasks</p>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- JavaScript để toggle hoàn thành -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".task-title").forEach(function (task) {
+            task.addEventListener("click", function (event) {
+                event.preventDefault(); // Ngăn load lại trang
+    
+                // Toggle class "completed-task"
+                this.classList.toggle("completed-task");
+    
+                // Kiểm tra xem task đã có <del> chưa
+                if (this.classList.contains("completed-task")) {
+                    this.innerHTML = "<del>" + this.textContent + "</del>";
+                    this.style.color = "#535353"; // Màu xám khi hoàn thành
+                    this.style.backgroundColor = "#d3d3d3"; // Nền xám
+                } else {
+                    this.innerHTML = this.textContent; // Xóa <del> khi bỏ gạch ngang
+                    this.style.color = "#333"; // Màu chữ mặc định
+                    this.style.backgroundColor = "white"; // Nền trắng
+                }
+            });
+        });
+    });
+</script>
+{% endblock content %}
+
+

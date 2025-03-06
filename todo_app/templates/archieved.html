@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-archieved">
+    <h1>Your tasks archieved there</h1>
+    <table class="table-archieved">
+        <tbody>
+            {% for item in tasks_archieved%}
+            <tr class="task-item">
+                <td>
+                    <a href="{% url 'update' item.pk%}?action=is_completed" class="task-title {% if item.is_completed %} completed-task {% else %} pending-task {% endif %}"
+                       id="task_{{ item.pk }}" onclick="toggleCompleted(event, {{ item.pk }})">
+                        {{ item.title }}
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'update' item.pk%}?action=is_deleted" id="delete_{{item.pk}}" class="btn-delete">Delete</a>
+                </td>
+                <td>
+                    <a href="{% url 'update' item.pk%}?action=is_archieved" id="archive_{{item.pk}}" class="btn-archieve">Restore</a>
+                </td>
+            </tr>
+            {% empty %}
+            <div>
+                <p>0 tasks</p>
+            </div>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".task-title").forEach(function (task) {
+            task.addEventListener("click", function (event) {
+                event.preventDefault(); // Ngăn load lại trang
+    
+                // Toggle class "completed-task"
+                this.classList.toggle("completed-task");
+    
+                // Kiểm tra xem task đã có <del> chưa
+                if (this.classList.contains("completed-task")) {
+                    this.innerHTML = "<del>" + this.textContent + "</del>";
+                    this.style.color = "#535353"; // Màu xám khi hoàn thành
+                    this.style.backgroundColor = "#d3d3d3"; // Nền xám
+                } else {
+                    this.innerHTML = this.textContent; // Xóa <del> khi bỏ gạch ngang
+                    this.style.color = "#333"; // Màu chữ mặc định
+                    this.style.backgroundColor = "white"; // Nền trắng
+                }
+            });
+        });
+    });
+</script>
+{% endblock content %}
+

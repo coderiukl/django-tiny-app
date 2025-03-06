@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="login">
+    <h1>Login!</h1>
+    <form method="post" autocomplete="off">
+        {% csrf_token %}
+        <label id="username" for="username">Username: </label>
+            {{loginform.username}}
+            
+            {% if loginform.username.errors %}
+                <div class="error-message">{{loginform.username.errors.0}}</div>
+            {% endif %}
+       
+        <label id="password" for="password">Password</label>
+            {{loginform.password}}
+
+            {% if loginform.password.errors %}
+                <div class="error-message">{{loginform.password.errors.0}}</div>
+            {% endif %}
+        
+        <button class="signin_button" type ="submit">Login</button>
+        <button class="signup_btn"><a href="{% url 'signup' %}">Have you an account? Register now!</a></button>
+    </form>
+    
+</div>
+{% endblock content %}
+

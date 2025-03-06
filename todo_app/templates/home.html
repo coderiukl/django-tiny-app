@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% if messages %}
+    <div class="message-container">
+        {% for message in messages %}
+            <div class="message {% if message.tags == 'success' %}success{%endif%}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+<div class="container">
+    <h1 id="todo-list">Write down your tasks</h1>
+    <br>
+    <form method="POST" action="{% url 'add' %}">
+        {% csrf_token %}
+        {{ form }}
+        <button class="add_task">Add task</button>
+    </form>
+
+    <table class="task-table" id="table-tasks">
+        <tbody>
+            {% for item in tasks %}
+            <tr class="task-item">
+                <td>
+                    <a href="{% url 'update' item.pk%}?action=is_completed" class="task-title {% if item.is_completed %} completed-task {% else %} pending-task {% endif %}"
+                       id="task_{{ item.pk }}" onclick="toggleCompleted(event, {{ item.pk }})">
+                        {{ item.title }}
+                    </a>
+                </td>
+
+                <td>
+                    <a href="#" class="btn-edit" onclick="openEditModal({{ item.pk }})">Edit</a>
+                </td>
+                <div class="modal" id="editModal_{{ item.pk }}">
+                    <div class="modal-content">
+                        <h2>Edit Task</h2>
+                        <form method="POST" action="{% url 'update' item.pk %}">
+                            {% csrf_token %}
+                            <label>Current title:</label>
+                            <input type="text" name="title" id="editInput_{{ item.pk }}" value="{{ item.title }}" required>
+                            <span class="close-modal" onclick="closeEditModal({{ item.pk }})">Close</span>
+                            <button type="submit" class="btn-save">Update</button>
+                        </form>
+                    </div>
+                </div>
+                <td>
+                    <a href="{% url 'update' item.pk%}?action=is_deleted" class="btn-delete">Delete</a>
+                </td>
+                <td>
+                    <a href="{% url 'update' item.pk%}?action=is_archieved" class="btn-archieve">Archieve</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</div>
+<script>
+function openEditModal(taskId) {
+    document.getElementById("editModal_" + taskId).style.display = "block";
+}
+
+function closeEditModal(taskId) {
+    document.getElementById("editModal_" + taskId).style.display = "none";
+}
+
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".task-title").forEach(function (task) {
+        task.addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn load lại trang
+
+            // Toggle class "completed-task"
+            this.classList.toggle("completed-task");
+
+            // Kiểm tra xem task đã có <del> chưa
+            if (this.classList.contains("completed-task")) {
+                this.innerHTML = "<del>" + this.textContent + "</del>";
+                this.style.color = "#535353"; // Màu xám khi hoàn thành
+                this.style.backgroundColor = "#d3d3d3"; // Nền xám
+            } else {
+                this.innerHTML = this.textContent; // Xóa <del> khi bỏ gạch ngang
+                this.style.color = "#333"; // Màu chữ mặc định
+                this.style.backgroundColor = "white"; // Nền trắng
+            }
+        });
+    });
+});
+
+
+</script>
+{% endblock %}

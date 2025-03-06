@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <p class="error-message">{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+<div class="registraion">
+    <h1 id="signup">SignUp</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="signup-form">
+            <label id="username_signup" for="{{ signupform.username.id_for_label}}">Username:</label>
+            {{signupform.username}}
+            <small class="error-message">{{ signupform.username.errors }}</small>
+
+            <label id="email_signup" for="{{ signupform.email.id_for_label}}">Email:</label>
+            {{signupform.email}}
+            <small class="error-message">{{ signupform.email.errors }}</small>
+
+            <label id="pasword1_signup" for="{{ signupform.password1.id_for_label}}">Password:</label>
+            {{signupform.password1}}
+            <small class="error-message">{{ signupform.password1.errors }}</small>
+
+            <label id="password2_signup" for="{{ signupform.password2.id_for_label}}">Enter Password Again:</label>
+            {{signupform.password2}}
+            <small class="error-message">{{ signupform.password2.errors }}</small>
+
+            <button class="signup_button">Sign Up</button>
+            <button class="signup_button"><a href="{% url 'signin' %}">Have you an account? Login now!</a></button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
+

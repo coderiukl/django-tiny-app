@@ -1,0 +1,65 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+*.dylib
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+media/
+staticfiles/
+
+# Virtualenv
+venv/
+ENV/
+env/
+.venv/
+
+# IDEs and Editors
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# MySQL
+*.sql
+*.sqlite3
+
+# Django migrations (if you don't want to track them)
+migrations/
+
+# PyCharm
+.idea/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# VSCode settings
+.vscode/
+
+# Local settings (if any)
+local_settings.py
+
+# Coveralls
+.coverage
+coverage.xml
+*.cover
+
+# Pytest
+.cache/
+
+# Flake8
+.flake8
+
+# Misc
+*.bak
+*.swp

@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?{% now 'U' %}">
+</head>
+<body>
+    <header>
+        <h1 id="main-title"><a href="{% url 'home' %}">Todo App</a></h1>
+        <div class="navbar">
+            <div class="item-navbar"><a href="{% url 'archieved' %}">Archieved</a></div>
+            <div class="item-navbar"><a href="{% url 'deleted' %}">Deleted</a></div>
+            {% if request.user.is_authenticated %}
+                <div class="item-navbar"><a href="{% url 'logout' %}">Log Out</a></div>
+            {% else %}
+                <div class="item-navbar"><a href="{% url 'signin' %}">Sign In</a></div>
+                <div class="item-navbar"><a href="{% url 'signup' %}">Sign Up</a></div>
+            {% endif %}
+        </div>
+    </header>
+    {% block content %}
+    {% endblock content %}
+    <script>
+        setTimeout(function() {
+            var messages = document.querySelectorAll(".message");
+            messages.forEach(function(message) {
+                mesage.style.display ="none";
+            });
+        }, 1000);
+    </script>
+</body>
+</html>
