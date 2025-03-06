@@ -13,6 +13,10 @@ urlpatterns = [
     path('deleted/',views.delete_task, name='deleted'),
     path('<int:pk>/edit/',views.update_task, name='update'),
     path('empty_recycle_bin/', views.empty_recycle_bin, name='empty_recycle_bin'),
+    # admin
+    path('admin-custome/manage-users/', views.manage_users, name='manage_users'),
+    path('admin-custome/manage-users/block/<int:user_id>/', views.toggle_block_user, name='toggle_block_user'),
+    path('admin-custome/manage-users/reset-password/<int:user_id>/', views.reset_password, name='reset_password'),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

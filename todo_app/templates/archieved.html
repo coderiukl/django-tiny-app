@@ -6,10 +6,10 @@
     <h1>Your tasks archieved there</h1>
     <table class="table-archieved">
         <tbody>
-            {% for item in tasks_archieved%}
+            {% for item in tasks_archieved %}
             <tr class="task-item">
                 <td>
-                    <a href="{% url 'update' item.pk%}?action=is_completed" class="task-title {% if item.is_completed %} completed-task {% else %} pending-task {% endif %}"
+                    <a href="{% url 'update' item.pk %}?action=is_completed" class="task-title {% if item.is_completed %} completed-task {% else %} pending-task {% endif %}"
                        id="task_{{ item.pk }}" onclick="toggleCompleted(event, {{ item.pk }})">
                         {{ item.title }}
                     </a>
