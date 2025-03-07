@@ -86,7 +86,7 @@ Mở terminal hoặc command prompt và chạy lệnh:
 ```sh
  cd todo_project
 ```
-### 2️⃣ **Đóng gói**
+### 3️⃣ **Đóng gói**
 Mở terminal hoặc command prompt và chạy lệnh, bước này sẽ khởi tạo images:
 ```sh
  docker-compose build 
@@ -96,14 +96,14 @@ Sau đó chạy lệnh:
  docker-compose up
 ```
 Để khởi tạo container.
-### 3️⃣ **Vào container bằng cách**
+### 4️⃣ **Vào container bằng cách**
 ```sh
  docker ps
  docker exec -it <container_id> bash
  python manage.py makemigrations
  python manage.py migrate
 ```
-### 4️⃣ **Chạy ứng dụng**
+### 5️⃣ **Chạy ứng dụng**
 Nhấn chuột vào ports 8000:8000
 
 ![image](https://github.com/user-attachments/assets/1c65f73f-e395-421f-a58e-dc791c7fd0d6)
